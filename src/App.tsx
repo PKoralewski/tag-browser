@@ -1,3 +1,11 @@
-import { ChakraProvider, theme } from "@chakra-ui/react"
+import { Routes, Route, BrowserRouter } from "react-router-dom"
 
-export const App = () => <ChakraProvider theme={theme}></ChakraProvider>
+import HomePage from "./pages/HomePage"
+
+export const App = () => (
+	<BrowserRouter>
+		<Routes>
+			<Route path='*' element={<HomePage />} />
+		</Routes>
+	</BrowserRouter>
+)
