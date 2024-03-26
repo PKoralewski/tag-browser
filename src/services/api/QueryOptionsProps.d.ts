@@ -1,4 +1,4 @@
-export interface IQueryOptions {
+export interface QueryOptionsProps {
 	page: number
 	pageSize: number
 	sortField: string
