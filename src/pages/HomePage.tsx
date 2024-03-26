@@ -1,6 +1,7 @@
-import { Box } from "@chakra-ui/react"
-import { useGetTagsQuery } from "../services/api/stackOverflow-api"
 import { useSearchParams } from "react-router-dom"
+
+import { useGetTagsQuery } from "../services/api/stackOverflow-api"
+import TagTable from "../components/TagTable"
 
 const HomePage = () => {
 	const [searchParams] = useSearchParams()
@@ -12,9 +13,7 @@ const HomePage = () => {
 		sortField: searchParams.get("sort") || "popular",
 	})
 
-	console.log(data)
-
-	return <Box>Home Page</Box>
+	return data && <TagTable tags={data} />
 }
 
 export default HomePage
