@@ -3,11 +3,11 @@ import { IQueryOptions } from "../../pages/QueryOptions"
 
 export const stackOverflowApi = createApi({
 	reducerPath: "stackOverflowApi",
-	baseQuery: fetchBaseQuery({ baseUrl: "https://api.stackexchange.com/2.3/tags?" }),
+	baseQuery: fetchBaseQuery({ baseUrl: "https://api.stackexchange.com/2.3" }),
 	endpoints: (builder) => ({
 		getTags: builder.query({
 			query: (queryOptions: IQueryOptions) =>
-				`page=${queryOptions.page}&pagesize=${queryOptions.pageSize}&order=${queryOptions.sortDirection}&sort=${queryOptions.sortField}&site=stackoverflow`,
+				`tags?page=${queryOptions.page}&pagesize=${queryOptions.pageSize}&order=${queryOptions.sortDirection}&sort=${queryOptions.sortField}&site=stackoverflow`,
 		}),
 	}),
 })
