@@ -1,8 +1,8 @@
 import { Table, TableContainer, TableProps, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/table"
 
-import { ITags } from "./Tags"
+import { ITagsProps } from "./TagsProps"
 
-const TagTable = ({ tags, ...props }: ITags & TableProps) => {
+const TagTable = ({ tags, ...props }: ITagsProps & TableProps) => {
 	return (
 		<TableContainer>
 			<Table variant='striped' colorScheme='blackAlpha' fontSize={[13, 14, 15, 16]} {...props}>

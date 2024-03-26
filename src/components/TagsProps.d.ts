@@ -1,4 +1,4 @@
-export interface ITags {
+export interface ITagsProps {
 	tags: {
 		items: {
 			name: string
