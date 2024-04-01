@@ -1,6 +1,6 @@
 import { Table, TableContainer, TableProps, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/table"
 
-import { ITagsProps } from "./TagsProps"
+import { ITagsProps } from "../types/Tags"
 
 const TagTable = ({ tags, ...props }: ITagsProps & TableProps) => {
 	return (

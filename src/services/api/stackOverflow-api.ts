@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { QueryOptionsProps } from "./QueryOptionsProps"
+
+import { QueryOptionsProps } from "../../types/QueryOptions"
 
 export const stackOverflowApi = createApi({
 	reducerPath: "stackOverflowApi",

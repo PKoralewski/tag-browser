@@ -1,6 +1,6 @@
 import { Spinner, SpinnerProps } from "@chakra-ui/spinner"
 
-import { ILoaderProps } from "./LoaderProps"
+import { ILoaderProps } from "../types/Loader"
 
 const Loader = ({ isLoading, children, ...props }: ILoaderProps & SpinnerProps) => {
 	return isLoading ? (
