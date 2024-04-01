@@ -26,7 +26,11 @@ const HomePage = () => {
 		<Flex h='100vh' flexDirection={"column"} justifyContent={"center"} alignItems={"center"} gap={10}>
 			<Loader isLoading={isLoading}>
 				<TagTable tags={data} w='800px' />
-				<Pagination page={1} totalPages={5} onPageChange={updatePageParam} />
+				<Pagination
+					page={Number(searchParams.get("page")) || 1}
+					totalPages={25}
+					onPageChange={updatePageParam}
+				/>
 			</Loader>
 		</Flex>
 	)
