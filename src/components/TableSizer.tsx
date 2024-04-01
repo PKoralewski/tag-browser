@@ -7,6 +7,7 @@ import {
 } from "@chakra-ui/number-input"
 
 import { ITableSizerProps } from "../types/TableSizer"
+import { Flex, Text } from "@chakra-ui/layout"
 
 const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange }: ITableSizerProps) => {
 	const handleSizerKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -29,20 +30,23 @@ const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange }: ITableSizer
 	}
 
 	return (
-		<NumberInput
-			value={tableSize}
-			min={minValue}
-			max={maxValue}
-			allowMouseWheel
-			onKeyDown={handleSizerKeyDown}
-			onChange={handleSizerOnChange}
-		>
-			<NumberInputField />
-			<NumberInputStepper>
-				<NumberIncrementStepper />
-				<NumberDecrementStepper />
-			</NumberInputStepper>
-		</NumberInput>
+		<Flex alignItems={"center"} gap={2}>
+			<Text>Table size:</Text>
+			<NumberInput
+				value={tableSize}
+				min={minValue}
+				max={maxValue}
+				allowMouseWheel
+				onKeyDown={handleSizerKeyDown}
+				onChange={handleSizerOnChange}
+			>
+				<NumberInputField />
+				<NumberInputStepper>
+					<NumberIncrementStepper />
+					<NumberDecrementStepper />
+				</NumberInputStepper>
+			</NumberInput>
+		</Flex>
 	)
 }
 
