@@ -7,6 +7,7 @@ import TagTable from "../components/TagTable"
 import Loader from "../components/Loader"
 import Pagination from "../components/Pagination"
 import TableSizer from "../components/TableSizer"
+import SortSelectField from "../components/SortSelectField"
 
 const HomePage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -37,9 +38,14 @@ const HomePage = () => {
 		setSearchParams({ ...getParamsObject(), pagesize: size })
 	}
 
+	const updateSortFieldParam = (field: string) => {
+		setSearchParams({ ...getParamsObject(), sort: field })
+	}
+
 	return (
 		<Flex h='100vh' flexDirection={"column"} justifyContent={"center"} alignItems={"center"} gap={10}>
 			<TableSizer tableSize={tagData.pageSize} minValue={1} maxValue={100} onSizeChange={updatePageSizeParam} />
+			<SortSelectField onFieldChange={updateSortFieldParam} />
 			<Loader isLoading={isFetching}>
 				<TagTable tags={data} w='800px' />
 				<Pagination page={tagData.page} totalPages={totalPages} onPageChange={updatePageParam} />
