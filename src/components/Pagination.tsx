@@ -26,7 +26,7 @@ const Pagination = ({ page, totalPages, onPageChange }: IPaginationProps) => {
 	}
 
 	const updateNextBtnDisabled = () => {
-		setNextBtnDisabled(currentPage === totalPages)
+		setNextBtnDisabled(currentPage >= totalPages)
 	}
 
 	const incrementPage = () => setCurrentPage((prevState) => prevState + 1)
