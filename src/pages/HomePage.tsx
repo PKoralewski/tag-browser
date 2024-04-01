@@ -11,7 +11,7 @@ const HomePage = () => {
 
 	// TODO: Create default tag various
 
-	const { data, isLoading } = useGetTagsQuery({
+	const { data, isFetching } = useGetTagsQuery({
 		page: Number(searchParams.get("page")) || 1,
 		pageSize: Number(searchParams.get("pagesize")) || 5,
 		sortDirection: searchParams.get("order") || "desc",
@@ -24,7 +24,7 @@ const HomePage = () => {
 
 	return (
 		<Flex h='100vh' flexDirection={"column"} justifyContent={"center"} alignItems={"center"} gap={10}>
-			<Loader isLoading={isLoading}>
+			<Loader isLoading={isFetching}>
 				<TagTable tags={data} w='800px' />
 				<Pagination
 					page={Number(searchParams.get("page")) || 1}
