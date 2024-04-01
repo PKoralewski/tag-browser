@@ -19,7 +19,7 @@ const SortSelectOrder = ({ onOrderChange }: ISortSelectOrderProps) => {
 	return (
 		<Flex alignItems={"center"} gap={2}>
 			<Text>Sort order:</Text>
-			<SelectField values={ordersArray} onChange={onOrderChange} />
+			<SelectField values={ordersArray} onSelectChange={onOrderChange} />
 		</Flex>
 	)
 }

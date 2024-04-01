@@ -22,8 +22,17 @@ const SortSelectField = ({ onFieldChange }: ISortSelectFieldProps) => {
 
 	return (
 		<Flex alignItems={"center"} gap={2}>
-			<Text>Sort field:</Text>
-			<SelectField values={sortFields} onChange={onFieldChange} />
+			<Text fontWeight='600' fontSize={[12, 13, 14, 15, 16]} w={["120px", "auto"]} whiteSpace={"nowrap"}>
+				Sort field:
+			</Text>
+			<SelectField
+				fontSize={[12, 13, 14, 15, 16]}
+				bgColor={"#FFF"}
+				h={["30px", "35px"]}
+				color='#333'
+				values={sortFields}
+				onSelectChange={onFieldChange}
+			/>
 		</Flex>
 	)
 }
