@@ -6,6 +6,7 @@ import { useGetTagsQuery } from "../services/api/stackOverflow-api"
 import TagTable from "../components/TagTable"
 import Loader from "../components/Loader"
 import Pagination from "../components/Pagination"
+import TableSizer from "../components/TableSizer"
 
 const HomePage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -26,12 +27,19 @@ const HomePage = () => {
 
 	const { data, isFetching } = useGetTagsQuery(tagData)
 
+	const getParamsObject = () => Object.fromEntries(searchParams)
+
 	const updatePageParam = (currentPage: number) => {
-		setSearchParams({ page: currentPage.toString() })
+		setSearchParams({ ...getParamsObject(), page: currentPage.toString() })
+	}
+
+	const updatePageSizeParam = (size: string) => {
+		setSearchParams({ ...getParamsObject(), pagesize: size })
 	}
 
 	return (
 		<Flex h='100vh' flexDirection={"column"} justifyContent={"center"} alignItems={"center"} gap={10}>
+			<TableSizer tableSize={tagData.pageSize} minValue={1} maxValue={100} onSizeChange={updatePageSizeParam} />
 			<Loader isLoading={isFetching}>
 				<TagTable tags={data} w='800px' />
 				<Pagination page={tagData.page} totalPages={totalPages} onPageChange={updatePageParam} />

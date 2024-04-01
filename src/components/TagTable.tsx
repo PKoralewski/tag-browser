@@ -6,7 +6,7 @@ import NoData from "./NoData"
 const TagTable = ({ tags, ...props }: ITagsProps & TableProps) => {
 	return (
 		<>
-			<TableContainer>
+			<TableContainer overflowY={"auto"}>
 				<Table variant='striped' colorScheme='blackAlpha' fontSize={[13, 14, 15, 16]} {...props}>
 					<Thead>
 						<Tr>
