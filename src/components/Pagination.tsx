@@ -1,16 +1,26 @@
 import { Button, Flex, Text } from "@chakra-ui/react"
-
-import { IPaginationProps } from "../types/Pagination"
 import { useEffect, useState } from "react"
 
+import { IPaginationProps } from "../types/Pagination"
+
 const Pagination = ({ page, totalPages, onPageChange }: IPaginationProps) => {
-	const [currentPage, setCurrentPage] = useState(page)
+	const [currentPage, setCurrentPage] = useState(page > totalPages ? totalPages : page < 1 ? 1 : page)
 	const [previousBtnDisabled, setPreviousBtnDisabled] = useState<boolean>(true)
 	const [nextBtnDisabled, setNextBtnDisabled] = useState<boolean>()
 
 	useEffect(() => {
 		if (!page) return
 		if (page === currentPage) return
+
+		if (page > totalPages) {
+			setCurrentPage(totalPages)
+			return
+		}
+
+		if (page < 1) {
+			setCurrentPage(1)
+			return
+		}
 
 		setCurrentPage(page)
 	}, [page])
