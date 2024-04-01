@@ -1,8 +1,8 @@
-import { Select } from "@chakra-ui/select"
 import { Flex, Text } from "@chakra-ui/layout"
 import { useState } from "react"
 
 import { ISortSelectFieldProps } from "../types/SortSelectField"
+import SelectField from "./SelectField"
 
 const SortSelectField = ({ onFieldChange }: ISortSelectFieldProps) => {
 	const [sortFields] = useState([
@@ -23,13 +23,7 @@ const SortSelectField = ({ onFieldChange }: ISortSelectFieldProps) => {
 	return (
 		<Flex alignItems={"center"} gap={2}>
 			<Text>Table size:</Text>
-			<Select onChange={(e) => onFieldChange(e.target.value)}>
-				{sortFields?.map((item, index) => (
-					<option key={index} value={item.value}>
-						{item.name}
-					</option>
-				))}
-			</Select>
+			<SelectField values={sortFields} onChange={onFieldChange} />
 		</Flex>
 	)
 }
