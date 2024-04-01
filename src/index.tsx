@@ -1,4 +1,3 @@
-import * as React from "react"
 import * as ReactDOM from "react-dom/client"
 import { ChakraProvider, theme } from "@chakra-ui/react"
 import { Provider } from "react-redux"
