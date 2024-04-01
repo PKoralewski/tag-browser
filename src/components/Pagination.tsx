@@ -46,7 +46,9 @@ const Pagination = ({ page, totalPages, onPageChange }: IPaginationProps) => {
 			<Button bgColor={"blackAlpha.100"} isDisabled={previousBtnDisabled} onClick={handlePreviousButtonClick}>
 				Previous
 			</Button>
-			<Text>{currentPage}</Text>
+			<Text>
+				{currentPage} of {totalPages}
+			</Text>
 			<Button bgColor={"blackAlpha.100"} isDisabled={nextBtnDisabled} onClick={handleNextButtonClick}>
 				Next
 			</Button>
