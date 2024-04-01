@@ -4,9 +4,12 @@ import { Flex } from "@chakra-ui/layout"
 import { useGetTagsQuery } from "../services/api/stackOverflow-api"
 import TagTable from "../components/TagTable"
 import Loader from "../components/Loader"
+import Pagination from "../components/Pagination"
 
 const HomePage = () => {
-	const [searchParams] = useSearchParams()
+	const [searchParams, setSearchParams] = useSearchParams()
+
+	// TODO: Create default tag various
 
 	const { data, isLoading } = useGetTagsQuery({
 		page: Number(searchParams.get("page")) || 1,
@@ -15,10 +18,19 @@ const HomePage = () => {
 		sortField: searchParams.get("sort") || "popular",
 	})
 
+	const updatePageParam = (currentPage: number) => {
+		setSearchParams({ page: currentPage.toString() })
+	}
+
 	return (
-		<Flex h='100vh' justifyContent={"center"} alignItems={"center"}>
+		<Flex h='100vh' flexDirection={"column"} justifyContent={"center"} alignItems={"center"} gap={10}>
 			<Loader isLoading={isLoading}>
 				<TagTable tags={data} w='800px' />
+				<Pagination
+					page={Number(searchParams.get("page")) || 1}
+					totalPages={25}
+					onPageChange={updatePageParam}
+				/>
 			</Loader>
 		</Flex>
 	)

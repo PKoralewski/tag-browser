@@ -13,7 +13,7 @@ const TagTable = ({ tags, ...props }: ITagsProps & TableProps) => {
 					</Tr>
 				</Thead>
 				<Tbody>
-					{tags.items.map((tag, index) => (
+					{tags?.items?.map((tag, index) => (
 						<Tr key={index}>
 							<Td>{tag.name}</Td>
 							<Td isNumeric>{tag.count}</Td>
