@@ -18,8 +18,17 @@ const SortSelectOrder = ({ onOrderChange }: ISortSelectOrderProps) => {
 
 	return (
 		<Flex alignItems={"center"} gap={2}>
-			<Text>Sort order:</Text>
-			<SelectField values={ordersArray} onSelectChange={onOrderChange} />
+			<Text fontWeight='600' fontSize={[12, 13, 14, 15, 16]} minW={["75px", "auto"]} whiteSpace={"nowrap"}>
+				Sort order:
+			</Text>
+			<SelectField
+				fontSize={[12, 13, 14, 15, 16]}
+				bgColor={"#FFF"}
+				h={["30px", "35px"]}
+				color='#333'
+				values={ordersArray}
+				onSelectChange={onOrderChange}
+			/>
 		</Flex>
 	)
 }
