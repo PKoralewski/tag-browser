@@ -7,7 +7,7 @@ const TagTable = ({ tags, ...props }: ITagsProps & TableProps) => {
 	return (
 		<>
 			<TableContainer overflowY={"auto"}>
-				<Table variant='striped' colorScheme='blackAlpha' fontSize={[13, 14, 15, 16]} {...props}>
+				<Table variant='striped' size={{ base: "sm", md: "md", lg: "lg" }} colorScheme='blackAlpha' {...props}>
 					<Thead>
 						<Tr>
 							<Th>Name</Th>
