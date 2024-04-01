@@ -7,15 +7,15 @@ import SelectField from "./SelectField"
 const SortSelectField = ({ onFieldChange }: ISortSelectFieldProps) => {
 	const [sortFields] = useState([
 		{
-			name: "popular",
+			name: "Popular",
 			value: "popular",
 		},
 		{
-			name: "activity",
+			name: "Activity",
 			value: "activity",
 		},
 		{
-			name: "name",
+			name: "Name",
 			value: "name",
 		},
 	])
