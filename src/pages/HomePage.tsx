@@ -60,7 +60,7 @@ const HomePage = () => {
 			gap={["30px", "40px", "50px", "60px"]}
 		>
 			<Flex w='100%' alignItems={"center"} gap={5} flexDirection={"column"}>
-				<Flex gap={[3, 4, 6, 10]} flexWrap={"wrap"}>
+				<Flex gap={[3, 4, 6, 10]} flexDirection={{ base: "column", md: "row" }}>
 					<TableSizer
 						tableSize={tagData.pageSize}
 						minValue={1}
