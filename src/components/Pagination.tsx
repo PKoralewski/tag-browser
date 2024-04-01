@@ -1,4 +1,5 @@
 import { Button, Flex, Text } from "@chakra-ui/react"
+import { ArrowForwardIcon, ArrowBackIcon } from "@chakra-ui/icons"
 import { useEffect } from "react"
 
 import { IPaginationProps } from "../types/Pagination"
@@ -28,15 +29,33 @@ const Pagination = ({ page, totalPages, onPageChange }: IPaginationProps) => {
 	}
 
 	return (
-		<Flex alignItems={"center"} gap={5}>
-			<Button bgColor={"blackAlpha.100"} isDisabled={previousBtnDisabled} onClick={handlePreviousButtonClick}>
+		<Flex alignItems={"center"} justifyContent={"center"} gap={[2, 3, 4, 5]}>
+			<Button
+				bgColor={"blackAlpha.100"}
+				w={["120px", "130px", "140px", "150px"]}
+				h={["30px", "35px"]}
+				fontSize={[12, 13, 14, 15, 16]}
+				gap={2}
+				isDisabled={previousBtnDisabled}
+				onClick={handlePreviousButtonClick}
+			>
+				<ArrowBackIcon boxSize={{ base: 4, md: 5 }} />
 				Previous
 			</Button>
-			<Text>
+			<Text fontSize={[12, 13, 14, 15, 16]} textAlign={"center"}>
 				{currentPage} of {totalPages}
 			</Text>
-			<Button bgColor={"blackAlpha.100"} isDisabled={nextBtnDisabled} onClick={handleNextButtonClick}>
+			<Button
+				bgColor={"blackAlpha.100"}
+				w={["120px", "130px", "140px", "150px"]}
+				h={["30px", "35px"]}
+				fontSize={[12, 13, 14, 15, 16]}
+				gap={2}
+				isDisabled={nextBtnDisabled}
+				onClick={handleNextButtonClick}
+			>
 				Next
+				<ArrowForwardIcon boxSize={{ base: 4, md: 5 }} />
 			</Button>
 		</Flex>
 	)
