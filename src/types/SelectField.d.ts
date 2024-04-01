@@ -3,5 +3,5 @@ export interface ISelectFieldProps {
 		name: string
 		value: string | number
 	}[]
-	onChange: (value: string) => void
+	onSelectChange: (value: string) => void
 }
