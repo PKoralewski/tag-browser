@@ -22,7 +22,7 @@ const SortSelectField = ({ onFieldChange }: ISortSelectFieldProps) => {
 
 	return (
 		<Flex alignItems={"center"} gap={2}>
-			<Text>Table size:</Text>
+			<Text>Sort field:</Text>
 			<SelectField values={sortFields} onChange={onFieldChange} />
 		</Flex>
 	)
