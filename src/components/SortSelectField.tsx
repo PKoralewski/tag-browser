@@ -1,10 +1,11 @@
 import { Flex, Text } from "@chakra-ui/layout"
 import { useState } from "react"
+import { SelectProps } from "@chakra-ui/react"
 
 import { ISortSelectFieldProps } from "../types/SortSelectField"
 import SelectField from "./SelectField"
 
-const SortSelectField = ({ onFieldChange }: ISortSelectFieldProps) => {
+const SortSelectField = ({ onFieldChange, ...props }: ISortSelectFieldProps & SelectProps) => {
 	const [sortFields] = useState([
 		{
 			name: "Popular",
@@ -30,6 +31,7 @@ const SortSelectField = ({ onFieldChange }: ISortSelectFieldProps) => {
 				bgColor={"#FFF"}
 				h={["30px", "35px"]}
 				color='#333'
+				{...props}
 				values={sortFields}
 				onSelectChange={onFieldChange}
 			/>
