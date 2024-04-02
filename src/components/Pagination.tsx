@@ -7,7 +7,7 @@ import { useCurrentPage } from "../hooks/useCurrentPage"
 import { usePreviousBtnDisabled } from "../hooks/usePreviousBtnDisabled"
 import { useNextBtnDisabled } from "../hooks/useNextBtnDisabled"
 
-const Pagination = ({ page, totalPages, onPageChange }: IPaginationProps) => {
+const Pagination = ({ page, totalPages, onPageChange, ...props }: IPaginationProps) => {
 	const { currentPage, setCurrentPage } = useCurrentPage(page, totalPages)
 	const { previousBtnDisabled } = usePreviousBtnDisabled(currentPage)
 	const { nextBtnDisabled } = useNextBtnDisabled(currentPage, totalPages)
@@ -29,7 +29,7 @@ const Pagination = ({ page, totalPages, onPageChange }: IPaginationProps) => {
 	}
 
 	return (
-		<Flex alignItems={"center"} justifyContent={"center"} gap={[2, 3, 4, 5]}>
+		<Flex alignItems={"center"} justifyContent={"center"} gap={[2, 3, 4, 5]} {...props}>
 			<Button
 				bgColor={"blackAlpha.100"}
 				w={["120px", "130px", "140px", "150px"]}
