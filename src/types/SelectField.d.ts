@@ -1,4 +1,5 @@
 export interface ISelectFieldProps {
+	value: string | number
 	values: {
 		name: string
 		value: string | number

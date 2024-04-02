@@ -17,6 +17,7 @@ type StoryType = StoryObj<ISelectFieldProps & SelectProps>
 export const Base: StoryType = (args: ISelectFieldProps) => <SelectField {...args} />
 
 Base.args = {
+	value: 1,
 	values: [
 		{
 			name: "Base 1",
@@ -35,9 +36,26 @@ SelectPlaceholder.args = {
 	placeholder: "Select",
 }
 
+export const SelectSecondOption: StoryType = (args: ISelectFieldProps) => <SelectField {...args} />
+
+SelectSecondOption.args = {
+	value: 2,
+	values: [
+		{
+			name: "Base 1",
+			value: 1,
+		},
+		{
+			name: "Base 2",
+			value: 2,
+		},
+	],
+}
+
 export const TagItems: StoryType = (args: ISelectFieldProps) => <SelectField {...args} />
 
 TagItems.args = {
+	value: 1,
 	values: [
 		{
 			name: "Tag 1",
@@ -53,6 +71,7 @@ TagItems.args = {
 export const SmallSelectField: StoryType = (args: ISelectFieldProps) => <SelectField {...args} />
 
 SmallSelectField.args = {
+	value: 1,
 	values: [
 		{
 			name: "Tag 1",
@@ -69,6 +88,7 @@ SmallSelectField.args = {
 export const LargeSelectField: StoryType = (args: ISelectFieldProps) => <SelectField {...args} />
 
 LargeSelectField.args = {
+	value: 1,
 	values: [
 		{
 			name: "Tag 1",
@@ -85,6 +105,7 @@ LargeSelectField.args = {
 export const RedSelectField: StoryType = (args: ISelectFieldProps) => <SelectField {...args} />
 
 RedSelectField.args = {
+	value: 1,
 	values: [
 		{
 			name: "Tag 1",
@@ -101,6 +122,7 @@ RedSelectField.args = {
 export const NarrowSelectField: StoryType = (args: ISelectFieldProps) => <SelectField {...args} />
 
 NarrowSelectField.args = {
+	value: 1,
 	values: [
 		{
 			name: "Tag 1",
@@ -117,6 +139,7 @@ NarrowSelectField.args = {
 export const HighSelectField: StoryType = (args: ISelectFieldProps) => <SelectField {...args} />
 
 HighSelectField.args = {
+	value: 1,
 	values: [
 		{
 			name: "Tag 1",
