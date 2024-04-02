@@ -1,4 +1,4 @@
-import { Button, Flex, Text } from "@chakra-ui/react"
+import { Button, Flex, FlexProps, Text } from "@chakra-ui/react"
 import { ArrowForwardIcon, ArrowBackIcon } from "@chakra-ui/icons"
 import { useEffect } from "react"
 
@@ -7,7 +7,7 @@ import { useCurrentPage } from "../hooks/useCurrentPage"
 import { usePreviousBtnDisabled } from "../hooks/usePreviousBtnDisabled"
 import { useNextBtnDisabled } from "../hooks/useNextBtnDisabled"
 
-const Pagination = ({ page, totalPages, onPageChange, ...props }: IPaginationProps) => {
+const Pagination = ({ page, totalPages, onPageChange, ...props }: IPaginationProps & FlexProps) => {
 	const { currentPage, setCurrentPage } = useCurrentPage(page, totalPages)
 	const { previousBtnDisabled } = usePreviousBtnDisabled(currentPage)
 	const { nextBtnDisabled } = useNextBtnDisabled(currentPage, totalPages)
