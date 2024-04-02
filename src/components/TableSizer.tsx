@@ -5,13 +5,14 @@ import {
 	NumberInputField,
 	NumberInputStepper,
 } from "@chakra-ui/number-input"
-
-import { ITableSizerProps } from "../types/TableSizer"
 import { Flex, Text } from "@chakra-ui/layout"
 import { useState } from "react"
+import { FlexProps } from "@chakra-ui/react"
+
+import { ITableSizerProps } from "../types/TableSizer"
 import { useDebounce } from "../hooks/useDebounce"
 
-const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange }: ITableSizerProps) => {
+const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange, ...props }: ITableSizerProps & FlexProps) => {
 	const [size, setSize] = useState(tableSize.toString())
 	useDebounce(size, onSizeChange)
 
@@ -35,7 +36,7 @@ const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange }: ITableSizer
 	}
 
 	return (
-		<Flex alignItems={"center"} gap={2}>
+		<Flex alignItems={"center"} gap={2} {...props}>
 			<Text fontWeight='600' fontSize={[12, 13, 14, 15, 16]} minW={["75px", "auto"]} whiteSpace={"nowrap"}>
 				Table size:
 			</Text>
