@@ -1,4 +1,3 @@
-import { useSearchParams } from "react-router-dom"
 import { Divider, Flex } from "@chakra-ui/layout"
 import { useState } from "react"
 
@@ -9,43 +8,12 @@ import Pagination from "../components/Pagination"
 import TableSizer from "../components/TableSizer"
 import SortSelectField from "../components/SortSelectField"
 import SortSelectOrder from "../components/SortSelectOrder"
+import { useTagData } from "../hooks/useTagData"
 
 const HomePage = () => {
-	const [searchParams, setSearchParams] = useSearchParams()
 	const [totalPages] = useState(25)
-	const [defaultTagData] = useState({
-		page: 1,
-		pageSize: 5,
-		sortDirection: "desc",
-		sortField: "popular",
-	})
-
-	const tagData = {
-		page: Number(searchParams.get("page")) || defaultTagData.page,
-		pageSize: Number(searchParams.get("pagesize")) || defaultTagData.pageSize,
-		sortDirection: searchParams.get("order") || defaultTagData.sortDirection,
-		sortField: searchParams.get("sort") || defaultTagData.sortField,
-	}
-
+	const { tagData, setPage, setPageSize, setSortDirection, setSortField } = useTagData()
 	const { data, isFetching } = useGetTagsQuery(tagData)
-
-	const getParamsObject = (params: URLSearchParams) => Object.fromEntries(params)
-
-	const updatePageParam = (currentPage: number) => {
-		setSearchParams((prevParams) => ({ ...getParamsObject(prevParams), page: currentPage.toString() }))
-	}
-
-	const updatePageSizeParam = (size: string) => {
-		setSearchParams((prevParams) => ({ ...getParamsObject(prevParams), pagesize: size }))
-	}
-
-	const updateSortFieldParam = (field: string) => {
-		setSearchParams((prevParams) => ({ ...getParamsObject(prevParams), sort: field }))
-	}
-
-	const updateSortDirectionParam = (orderDirection: string) => {
-		setSearchParams((prevParams) => ({ ...getParamsObject(prevParams), order: orderDirection }))
-	}
 
 	return (
 		<Flex
@@ -61,14 +29,9 @@ const HomePage = () => {
 		>
 			<Flex w='100%' alignItems={"center"} gap={5} flexDirection={"column"}>
 				<Flex gap={[3, 4, 6, 10]} flexDirection={{ base: "column", md: "row" }}>
-					<TableSizer
-						tableSize={tagData.pageSize}
-						minValue={1}
-						maxValue={100}
-						onSizeChange={updatePageSizeParam}
-					/>
-					<SortSelectField sortField={tagData.sortField} onFieldChange={updateSortFieldParam} />
-					<SortSelectOrder orderDirection={tagData.sortDirection} onOrderChange={updateSortDirectionParam} />
+					<TableSizer tableSize={tagData.pageSize} minValue={1} maxValue={100} onSizeChange={setPageSize} />
+					<SortSelectField sortField={tagData.sortField} onFieldChange={setSortField} />
+					<SortSelectOrder orderDirection={tagData.sortDirection} onOrderChange={setSortDirection} />
 				</Flex>
 				<Divider borderColor={"#FFF"} />
 			</Flex>
@@ -87,7 +50,7 @@ const HomePage = () => {
 					overflowX={"auto"}
 				>
 					<TagTable tags={data} h='100%' minW={["250px", "400px", "600px", "800px"]} />
-					<Pagination page={tagData.page} totalPages={totalPages} onPageChange={updatePageParam} />
+					<Pagination page={tagData.page} totalPages={totalPages} onPageChange={setPage} />
 				</Flex>
 			</Loader>
 		</Flex>

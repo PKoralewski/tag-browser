@@ -8,6 +8,9 @@ export const useCurrentOrderDirection = (orderArray: OrderDirection[], order: st
 	)
 
 	useEffect(() => {
+		if (!order) return
+		if (currentOrderDirection === order) return
+
 		const isCorrectSortField = orderArray.some((field) => field.value === order.toLowerCase())
 		if (isCorrectSortField) {
 			setCurrentOrderDirection(order)

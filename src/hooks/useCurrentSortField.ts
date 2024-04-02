@@ -8,6 +8,7 @@ export const useCurrentSortField = (sortFields: SortField[], sortField: string) 
 	)
 
 	useEffect(() => {
+		if (!sortField) return
 		if (currentSortField === sortField) return
 
 		const isCorrectSortField = sortFields.some((field) => field.value === sortField.toLowerCase())

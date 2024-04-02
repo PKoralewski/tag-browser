@@ -12,5 +12,5 @@ export const useDebounce = <T>(value: T, callback: (value: T) => void, delay: nu
 		return () => {
 			debounceHandler.cancel()
 		}
-	}, [value, callback, delay])
+	}, [value, delay])
 }

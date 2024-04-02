@@ -21,12 +21,12 @@ const SortSelectField = ({ sortField, onFieldChange, ...props }: ISortSelectFiel
 			value: "name",
 		},
 	])
+
 	const { currentSortField, setCurrentSortField } = useCurrentSortField(sortFields, sortField)
 
 	useEffect(() => {
-		if (sortField === currentSortField) return
 		onFieldChange(currentSortField.toString())
-	}, [currentSortField])
+	}, [currentSortField, sortField])
 
 	return (
 		<Flex alignItems={"center"} gap={2}>

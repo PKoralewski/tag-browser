@@ -20,8 +20,6 @@ const SortSelectOrder = ({ orderDirection, onOrderChange, ...props }: ISortSelec
 	const { currentOrderDirection, setCurrentOrderDirection } = useCurrentOrderDirection(ordersArray, orderDirection)
 
 	useEffect(() => {
-		if (orderDirection === currentOrderDirection) return
-
 		onOrderChange(currentOrderDirection.toString())
 	}, [currentOrderDirection])
 

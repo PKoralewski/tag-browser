@@ -14,7 +14,7 @@ import { useCurrentSize } from "../hooks/useCurrentSize"
 
 const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange, ...props }: ITableSizerProps & FlexProps) => {
 	const { currentSize, setCurrentSize } = useCurrentSize(tableSize, minValue, maxValue)
-	useDebounce(currentSize.toString(), onSizeChange, 300)
+	useDebounce(currentSize, onSizeChange, 300)
 
 	const handleSizerKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === "-" || e.key === "+" || e.key === ".") {
