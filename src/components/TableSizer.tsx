@@ -8,8 +8,13 @@ import {
 
 import { ITableSizerProps } from "../types/TableSizer"
 import { Flex, Text } from "@chakra-ui/layout"
+import { useState } from "react"
+import { useDebounce } from "../hooks/useDebounce"
 
 const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange }: ITableSizerProps) => {
+	const [size, setSize] = useState(tableSize.toString())
+	useDebounce(size, onSizeChange)
+
 	const handleSizerKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === "-" || e.key === "+" || e.key === ".") {
 			e.preventDefault()
@@ -19,14 +24,14 @@ const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange }: ITableSizer
 
 	const handleSizerOnChange = (value: string | number) => {
 		if (Number(value) < 1) {
-			onSizeChange("1")
+			setSize("1")
 			return
 		}
 		if (Number(value) > 100) {
-			onSizeChange("100")
+			setSize("100")
 			return
 		}
-		onSizeChange(value.toString())
+		setSize(value.toString())
 	}
 
 	return (
@@ -38,7 +43,7 @@ const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange }: ITableSizer
 				bgColor={"#FFF"}
 				color='#333'
 				borderRadius={8}
-				value={tableSize}
+				value={size}
 				min={minValue}
 				max={maxValue}
 				allowMouseWheel

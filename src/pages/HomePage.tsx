@@ -36,6 +36,8 @@ const HomePage = () => {
 	}
 
 	const updatePageSizeParam = (size: string) => {
+		console.log(1)
+
 		setSearchParams({ ...getParamsObject(), pagesize: size })
 	}
 
