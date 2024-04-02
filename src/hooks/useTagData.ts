@@ -10,7 +10,7 @@ export const useTagData = () => {
 		sortField: "popular",
 	})
 	const [page, setPage] = useState(Number(searchParams.get("page")) || defaultTagData.page)
-	const [pageSize, setPageSize] = useState(Number(searchParams.get("pagesize")) || defaultTagData.pageSize)
+	const [pageSize, setPageSize] = useState(Number(searchParams.get("size")) || defaultTagData.pageSize)
 	const [sortDirection, setSortDirection] = useState(searchParams.get("order") || defaultTagData.sortDirection)
 	const [sortField, setSortField] = useState(searchParams.get("sort") || defaultTagData.sortField)
 	const [tagData, setTagData] = useState({
@@ -27,7 +27,7 @@ export const useTagData = () => {
 			sortDirection,
 			sortField,
 		})
-		setSearchParams({ page: page.toString(), pageSize: pageSize.toString(), sort: sortField, order: sortDirection })
+		setSearchParams({ page: page.toString(), size: pageSize.toString(), sort: sortField, order: sortDirection })
 	}, [page, pageSize, sortDirection, sortField])
 
 	return {

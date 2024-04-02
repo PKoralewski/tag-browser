@@ -19,5 +19,5 @@ export const useCurrentSortField = (sortFields: SortField[], sortField: string) 
 		setCurrentSortField(sortFields[0].value)
 	}, [sortField, sortFields])
 
-	return { currentSortField, setCurrentSortField }
+	return { currentSortField: currentSortField.toString().toLowerCase(), setCurrentSortField }
 }

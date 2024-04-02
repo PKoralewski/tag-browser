@@ -11,7 +11,7 @@ export const useCurrentOrderDirection = (orderArray: OrderDirection[], order: st
 		if (!order) return
 		if (currentOrderDirection === order) return
 
-		const isCorrectSortField = orderArray.some((field) => field.value === order.toLowerCase())
+		const isCorrectSortField = orderArray.some((record) => record.value === order.toLowerCase())
 		if (isCorrectSortField) {
 			setCurrentOrderDirection(order)
 			return
@@ -19,5 +19,5 @@ export const useCurrentOrderDirection = (orderArray: OrderDirection[], order: st
 		setCurrentOrderDirection(orderArray[0].value)
 	}, [order, orderArray])
 
-	return { currentOrderDirection, setCurrentOrderDirection }
+	return { currentOrderDirection: currentOrderDirection.toString().toLowerCase(), setCurrentOrderDirection }
 }
