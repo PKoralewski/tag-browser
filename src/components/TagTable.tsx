@@ -15,7 +15,7 @@ const TagTable = ({ tags, ...props }: ITagsProps & TableProps) => {
 						</Tr>
 					</Thead>
 					<Tbody>
-						{tags?.items.length &&
+						{!!tags?.items.length &&
 							tags?.items?.map((tag, index) => (
 								<Tr key={index}>
 									<Td>{tag.name}</Td>

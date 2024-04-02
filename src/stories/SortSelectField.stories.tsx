@@ -16,12 +16,21 @@ type StoryType = StoryObj<ISortSelectFieldProps & SelectProps>
 
 export const Base: StoryType = (args: ISortSelectFieldProps) => <SortSelectField {...args} />
 
-Base.args = {}
+Base.args = {
+	sortField: "popular",
+}
 
 export const SelectPlaceholder: StoryType = (args: ISortSelectFieldProps) => <SortSelectField {...args} />
 
 SelectPlaceholder.args = {
+	sortField: "",
 	placeholder: "Select",
+}
+
+export const SelectNameOption: StoryType = (args: ISortSelectFieldProps) => <SortSelectField {...args} />
+
+SelectNameOption.args = {
+	sortField: "name",
 }
 
 export const SmallSortSelectField: StoryType = (args: ISortSelectFieldProps & SelectProps) => (
@@ -29,23 +38,27 @@ export const SmallSortSelectField: StoryType = (args: ISortSelectFieldProps & Se
 )
 
 SmallSortSelectField.args = {
+	sortField: "popular",
 	h: "25px",
 }
 
 export const LargeSortSelectField: StoryType = (args: ISortSelectFieldProps) => <SortSelectField {...args} />
 
 LargeSortSelectField.args = {
+	sortField: "popular",
 	h: "50px",
 }
 
 export const RedSortSelectField: StoryType = (args: ISortSelectFieldProps) => <SortSelectField {...args} />
 
 RedSortSelectField.args = {
+	sortField: "popular",
 	bgColor: "red",
 }
 
 export const NarrowSortSelectField: StoryType = (args: ISortSelectFieldProps) => <SortSelectField {...args} />
 
 NarrowSortSelectField.args = {
+	sortField: "popular",
 	width: 100,
 }

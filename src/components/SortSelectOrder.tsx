@@ -1,11 +1,12 @@
 import { Flex, Text } from "@chakra-ui/layout"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { SelectProps } from "@chakra-ui/react"
 
 import SelectField from "./SelectField"
 import { ISortSelectOrderProps } from "../types/SortSelectOrder"
+import { useCurrentOrderDirection } from "../hooks/useCurrentOrderDirection"
 
-const SortSelectOrder = ({ onOrderChange, ...props }: ISortSelectOrderProps & SelectProps) => {
+const SortSelectOrder = ({ orderDirection, onOrderChange, ...props }: ISortSelectOrderProps & SelectProps) => {
 	const [ordersArray] = useState([
 		{
 			name: "Descending",
@@ -16,6 +17,13 @@ const SortSelectOrder = ({ onOrderChange, ...props }: ISortSelectOrderProps & Se
 			value: "asc",
 		},
 	])
+	const { currentOrderDirection, setCurrentOrderDirection } = useCurrentOrderDirection(ordersArray, orderDirection)
+
+	useEffect(() => {
+		if (orderDirection === currentOrderDirection) return
+
+		onOrderChange(currentOrderDirection.toString())
+	}, [currentOrderDirection])
 
 	return (
 		<Flex alignItems={"center"} gap={2}>
@@ -28,8 +36,9 @@ const SortSelectOrder = ({ onOrderChange, ...props }: ISortSelectOrderProps & Se
 				h={["30px", "35px"]}
 				color='#333'
 				{...props}
+				value={orderDirection}
 				values={ordersArray}
-				onSelectChange={onOrderChange}
+				onSelectChange={setCurrentOrderDirection}
 			/>
 		</Flex>
 	)

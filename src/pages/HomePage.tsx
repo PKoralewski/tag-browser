@@ -29,22 +29,22 @@ const HomePage = () => {
 
 	const { data, isFetching } = useGetTagsQuery(tagData)
 
-	const getParamsObject = () => Object.fromEntries(searchParams)
+	const getParamsObject = (params: URLSearchParams) => Object.fromEntries(params)
 
 	const updatePageParam = (currentPage: number) => {
-		setSearchParams({ ...getParamsObject(), page: currentPage.toString() })
+		setSearchParams((prevParams) => ({ ...getParamsObject(prevParams), page: currentPage.toString() }))
 	}
 
 	const updatePageSizeParam = (size: string) => {
-		setSearchParams({ ...getParamsObject(), pagesize: size })
+		setSearchParams((prevParams) => ({ ...getParamsObject(prevParams), pagesize: size }))
 	}
 
 	const updateSortFieldParam = (field: string) => {
-		setSearchParams({ ...getParamsObject(), sort: field })
+		setSearchParams((prevParams) => ({ ...getParamsObject(prevParams), sort: field }))
 	}
 
 	const updateSortDirectionParam = (orderDirection: string) => {
-		setSearchParams({ ...getParamsObject(), order: orderDirection })
+		setSearchParams((prevParams) => ({ ...getParamsObject(prevParams), order: orderDirection }))
 	}
 
 	return (
@@ -67,8 +67,8 @@ const HomePage = () => {
 						maxValue={100}
 						onSizeChange={updatePageSizeParam}
 					/>
-					<SortSelectField onFieldChange={updateSortFieldParam} />
-					<SortSelectOrder onOrderChange={updateSortDirectionParam} />
+					<SortSelectField sortField={tagData.sortField} onFieldChange={updateSortFieldParam} />
+					<SortSelectOrder orderDirection={tagData.sortDirection} onOrderChange={updateSortDirectionParam} />
 				</Flex>
 				<Divider borderColor={"#FFF"} />
 			</Flex>
