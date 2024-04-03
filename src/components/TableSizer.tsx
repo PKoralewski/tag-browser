@@ -24,12 +24,12 @@ const TableSizer = ({ tableSize, minValue, maxValue, onSizeChange, ...props }: I
 	}
 
 	const handleSizerOnChange = (value: string | number) => {
-		if (Number(value) < 1) {
-			setCurrentSize(1)
+		if (Number(value) < minValue) {
+			setCurrentSize(minValue)
 			return
 		}
-		if (Number(value) > 100) {
-			setCurrentSize(100)
+		if (Number(value) > maxValue) {
+			setCurrentSize(maxValue)
 			return
 		}
 		setCurrentSize(Number(value))
